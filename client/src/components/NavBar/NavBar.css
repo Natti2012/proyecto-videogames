@@ -1,0 +1,52 @@
+.nav{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #38444d;
+}
+li{
+    float: left;
+}
+.items{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.items:hover{
+    background-color: red;
+}
+.filter{
+    display: inline-block;
+}
+.filter:hover{
+    background-color: red;
+    display: block;
+}
+.filter-content{
+  
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.filter-content:hover{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.content{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.content:hover{
+    background-color: wheat;
+}
