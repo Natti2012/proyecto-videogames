@@ -2,8 +2,9 @@
 import React, { useEffect} from 'react'
 import CardDetail from '../CardDetail';
 import { useDispatch, useSelector } from 'react-redux'
-import { getDetails } from '../../redux/actions';
-import { useParams } from 'react-router-dom';
+import { getDetails, clearPage } from '../../redux/actions';
+import { useParams } from 'react-router-dom'; 
+import './detailVideo.css'
 
 function DetailVideogame() {
   const{id}= useParams()
@@ -11,13 +12,14 @@ function DetailVideogame() {
   const details = useSelector(state=>state.details)
   useEffect(()=>{
     dispatch(getDetails(id))
+    return () => { //TODO LO QUE SUCEDA DENTRO DEL RETURN ES CUANDO SE DESMONTA EL COMPONENTE
+      dispatch(clearPage())
+    }
   },[dispatch,id])
   return (
-   
-
-
-
-   <CardDetail
+    <>
+    {details.name ?
+     <CardDetail
    name = {details.name}
    image= {details.image}
    genres= {details.genres}
@@ -27,6 +29,23 @@ function DetailVideogame() {
   platforms= {details.platforms}
    
    />
+   :
+  
+   ( 
+   <div>
+      <img src='mario.gif'  alt='cargandoo..' />
+      <h1 className='cargando'>Cargando...</h1>
+     </div>
+    
+   )
+  }
+    
+    </>
+   
+
+
+
+  
   )
 }
 

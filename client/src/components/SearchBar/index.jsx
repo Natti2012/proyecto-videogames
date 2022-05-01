@@ -2,11 +2,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { getVideogames } from "../../redux/actions";
+import { clearSearch, getVideogames } from "../../redux/actions";
 
-export default function SearchBar({onSearch}) {
+export default function SearchBar() {
   const dispatch= useDispatch()
   const [name,setName] = useState("");
+
+  
   function handleInputchange(e){
     e.preventDefault()
     setName(e.target.value)
@@ -15,6 +17,9 @@ export default function SearchBar({onSearch}) {
     e.preventDefault()
     dispatch(getVideogames(name))
     setName('')
+    return(
+      dispatch(clearSearch())
+    )
   }
 
 

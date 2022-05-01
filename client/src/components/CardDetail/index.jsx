@@ -11,12 +11,15 @@ export default function CardDetail ({name, image, genres, released, description,
       <h4>Realeased date: {released}</h4>
       
        <h3>Description:</h3>
-       {description}
+       <div>
+         {description}
+       </div>
+       
        
         
      
       <h4>Rating: {rating}</h4>
-      <h4>Platfoms:.{platforms}</h4>
+      <h4>Platfoms:{platforms}</h4>
       <h4>Genres: {genres}</h4>
     </div>
     )
