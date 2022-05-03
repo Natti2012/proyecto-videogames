@@ -1,41 +1,24 @@
 
-ul{
+.pagination{
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
-/* 
-.paginado{
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
-   
-    font-size: 22px;
-}
-.number{
-    background-color: #4CAF50;
-  color: white;
-  border: 5px solid #4CAF50;
-} */
-ul.pagination {
-    display: inline-block;
+     display: inline-block;
     padding: 0;
     margin: 0;
      ;
-
 }
 
-ul.pagination li a {
+
+.pagination li  {
     color: black;
     float: left;
     padding: 8px 16px;
-    text-decoration: none;
+  
     border: 1px solid rgb(239, 239, 106);
     background-color: bisque;
 }
-ul.pagination li a:hover{
+ul.pagination li:hover{
 background-color: aquamarine;
 }
 li {

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getDetails, clearPage } from '../../redux/actions';
 import { useParams } from 'react-router-dom'; 
 import './detailVideo.css'
+import NavBar from '../NavBar';
 
 function DetailVideogame() {
   const{id}= useParams()
@@ -18,6 +19,7 @@ function DetailVideogame() {
   },[dispatch,id])
   return (
     <>
+    <NavBar/>
     {details.name ?
      <CardDetail
    name = {details.name}
@@ -33,7 +35,7 @@ function DetailVideogame() {
   
    ( 
    <div>
-      <img src='mario.gif'  alt='cargandoo..' />
+      <img src='mario.gif' width= '500px' alt='cargandoo..' />
       <h1 className='cargando'>Cargando...</h1>
      </div>
     

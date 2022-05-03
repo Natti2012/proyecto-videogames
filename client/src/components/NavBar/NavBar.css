@@ -10,7 +10,7 @@ li{
 }
 .items{
     display: inline-block;
-    color: white;
+    color: rgb(156, 27, 27);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
