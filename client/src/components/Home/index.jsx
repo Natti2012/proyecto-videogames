@@ -60,10 +60,10 @@ function Home() {
       <div>
         <NavBar />
         <div className='nav'>
+          <SearchBar />
           <ul className='menu'>
-
-            <li><SearchBar /></li>
-            <li><Link to='/home/create/videogame' className='items'>Create a Videogame</Link></li>
+            <li></li>
+            <li><Link to='/create/videogame' className='items'>Create a Videogame</Link></li>
             <div>
               <select onChange={e => { handleOrderName(e) }}>
                  <option value='all'>Alphabetic</option>
@@ -88,15 +88,15 @@ function Home() {
               </select>
               <select onChange={e => { handleFilterByCreation(e) }}>
                 <option value='all' >All</option>
-                <option value='created'>Created</option>
-                <option value='api'>Existing</option>
+                <option value='created_DB'>Created</option>
+                <option value='created_Api'>Existing</option>
               </select>
             </div>
 
           </ul>
         </div>
 
-        )
+        
         <button onClick={e => { handleClick(e) }}><Link to='/home' className='items'>Refresh🔄</Link></button>
       </div>
 
@@ -110,9 +110,9 @@ function Home() {
 
         currentsVG.map((v) => {
           return (
-            <div key={v.id}  >
+            <div key={v.id} id={v.id} >
               <Card
-                id={v.id}
+                
                 rating= {v.rating}
                 name={v.name}
                 image={v.image}
@@ -124,7 +124,14 @@ function Home() {
 
 
         }) :
-        (<h1>Cargando</h1>)}
+        ( 
+          <div>
+             <img src='mario.gif' width= '500px' alt='cargandoo..' />
+             <h1 className='cargando'>Cargando...</h1>
+            </div>
+           
+          )
+         }
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import{CLEAR_PAGE, GET_DETAILS_VIDEOGAMES, GET_VIDEOGAMES, CLEAR_SEARCH, FILTER_GENRES, ALL_GENRES, FILTER_CREATED, ORDER_NAME, ORDER_RATING} from '../actions/actionsTypes'
+import{CLEAR_PAGE, GET_DETAILS_VIDEOGAMES, GET_VIDEOGAMES, CLEAR_SEARCH, FILTER_GENRES, ALL_GENRES, FILTER_CREATED, ORDER_NAME, ORDER_RATING, CREATE_VIDEOGAME} from '../actions/actionsTypes'
 const inicialState={
     videogames : [],
     details: {},
@@ -39,20 +39,20 @@ switch(type){
       videogames: genresFilter
     }
     case FILTER_CREATED:
-   
-    const createdFilter = payload === 'created' && payload !== 'all' ? [...state.filterGenre].filter((e)=>{ return e.id.includes('-') }) : [...state.filterGenre].filter((e)=>{return !e.id.includes('-') })
+    const filterOrd = state.filterGenre
+    const createdFilter = payload === 'created_DB'? filterOrd.filter((e)=>e.created === 'created_DB' ) : filterOrd.filter((e)=> e.created === 'created_Api'  )
         
     
     return{
         ...state,
-        videogames: payload === 'all' ?  [...state.filterGenre] : createdFilter
+        videogames: payload === 'all' ?  filterOrd : createdFilter
 
     }
     case ORDER_NAME:
         if(payload === 'all'){
             return{
                 ...state,
-               videogames:  [...state.orderVG]
+               videogames:  [...state.filterGenre]
             }
         }
         if(payload === 'ascABC'){
@@ -103,6 +103,9 @@ switch(type){
                     })
                     
                 }
+            }
+            case CREATE_VIDEOGAME: return{
+                ...state
             }
 
     default:return state

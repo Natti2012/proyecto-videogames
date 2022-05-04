@@ -1,0 +1,28 @@
+body{
+    background-color: bisque;
+}
+label{
+    color: rgb(234, 72, 72);
+    background-color: beige;
+font-size: 30px;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+div {
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  input + span {
+    padding-right: 30px;
+  }
+  
+  input:invalid+span:after {
+    position: absolute; content: '✖';
+    padding-left: 5px;
+  }
+  
+  input:valid+span:after {
+    position: absolute;
+    content: '✓';
+    padding-left: 5px;
+  }
