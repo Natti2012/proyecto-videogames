@@ -33,12 +33,13 @@ module.exports = (sequelize) => {
 
     },
     platforms:{
-      type:DataTypes.STRING,
+      type:DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false
 
     },
     image:{
      type: DataTypes.STRING,
+     defaultValue: 'https://i.pinimg.com/474x/1a/b7/51/1ab75139f3b1e6ecc1f59ffc2a4b0f2e--mario-bros-mario-kart.jpg'
     },
    
   },
