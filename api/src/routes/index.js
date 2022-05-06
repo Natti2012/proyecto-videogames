@@ -61,7 +61,7 @@ const ApiName= async (name)=>{
 }
 
 
-router.get('/videogames', async (req, res) => {
+router.get('/videogames', async (req, res ,next) => {
     const { name } = req.query
    
     const ApiNameVg= await ApiName(name)
@@ -93,7 +93,7 @@ router.get('/videogames', async (req, res) => {
        if (allgame.length === 0) return res.status(400).json({ error: 'The requested video game was not found' })
         return res.json(allgame)
         }catch(error){
-            console.log(error)
+           next(error)
 
        
         
@@ -107,7 +107,7 @@ router.get('/videogames', async (req, res) => {
 
 
 
-router.get('/videogame/:idVideogame', async (req, res) => {
+router.get('/videogame/:idVideogame', async (req, res, next) => {
     const { idVideogame } = req.params;
     if (!idVideogame.includes('-')) {
         const busquedaIdApi = await axios.get(`https://api.rawg.io/api/games/${idVideogame}?key=${API_KEY}`)
@@ -180,7 +180,7 @@ router.get('/genres', async (req, res, next) => {
  
     res.json(GenresName)
   } catch (error) {
-      console.log(error)
+     next(error)
   } 
 });
 
@@ -208,6 +208,9 @@ router.post('/videogame', async (req, res, next) => {
     } catch (error) {
         next(error)
     }
+})
+router.delete('/delete', async (req, res , next)=>{
+    
 })
 
 module.exports = router;

@@ -45,28 +45,28 @@ function Home() {
     dispatch(filterByCreated(e.target.value))
 
   }
-   function handleOrderName(e) {
+  function handleOrderName(e) {
     e.preventDefault();
     dispatch(orderByName(e.target.value))
     setCurrentPage(1);
   }
-   function handleOrderRating(e) {
+  function handleOrderRating(e) {
     e.preventDefault();
     dispatch(orderByName(e.target.value))
     setCurrentPage(1);
   }
   return (
-    <div className='body'>
+    <div className='backgroundHome'>
       <div>
         <NavBar />
         <div className='nav'>
           <SearchBar />
-          <ul className='menu'>
-            <li></li>
+          <ul >
+           
             <li><Link to='/create/videogame' className='items'>Create a Videogame</Link></li>
             <div>
-              <select onChange={e => { handleOrderName(e) }}>
-                 <option value='all'>Alphabetic</option>
+              <select onChange={e => { handleOrderName(e) }} className='filter'>
+                <option value='all'>Alphabetic</option>
                 <option value='ascABC'>Ascendent</option>
                 <option value='descABC'>Descendent</option>
               </select>
@@ -96,7 +96,7 @@ function Home() {
           </ul>
         </div>
 
-        
+
         <button onClick={e => { handleClick(e) }}><Link to='/home' className='items'>Refresh🔄</Link></button>
       </div>
 
@@ -105,33 +105,33 @@ function Home() {
         allVideoGame={allVideoGame.length}
         paginado={paginado}
       />
+      <div className='cards'>
 
-      {currentsVG ?
 
-        currentsVG.map((v) => {
-          return (
-            <div key={v.id} id={v.id} >
-              <Card
-                
-                rating= {v.rating}
-                name={v.name}
-                image={v.image}
-                genres={v.genres.join(' ')}
-              />
+        {currentsVG ?
+
+          currentsVG.map((v) => {
+            return (
+              <div key={v.id} >
+                <Card
+                  id={v.id}
+                  rating={v.rating}
+                  name={v.name}
+                  image={v.image}
+                  genres={v.genres.join(' ')}
+                />
+              </div>
+            )
+          }) :
+          (
+            <div>
+              <img src='mario.gif' width='500px' alt='cargandoo..' />
+              <h1 className='cargando'>Cargando...</h1>
             </div>
+
           )
-
-
-
-        }) :
-        ( 
-          <div>
-             <img src='mario.gif' width= '500px' alt='cargandoo..' />
-             <h1 className='cargando'>Cargando...</h1>
-            </div>
-           
-          )
-         }
+        }
+      </div>
     </div>
   )
 }

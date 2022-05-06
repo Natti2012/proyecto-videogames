@@ -11,6 +11,8 @@ function NavBar() {
 
   return (
     <Link to='/home' className='items'>Home</Link>
+
+    
   )
 }
 

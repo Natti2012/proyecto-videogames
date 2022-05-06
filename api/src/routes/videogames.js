@@ -12,7 +12,7 @@ const bdInfo = async () => {
     })
 }
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
     const { name } = req.query
    const api = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)
     const api2 = await axios.get(api.data.next)
@@ -56,7 +56,7 @@ router.get('/', async (req, res) => {
        if (filterVideo.length === 0) return res.status(400).json({ error: 'The requested video game was not found' })
         return res.json(filterVideo)
         }catch(error){
-            console.log(error)
+            next(error)
 
        
         
@@ -69,3 +69,4 @@ router.get('/', async (req, res) => {
 })
 
 
+module.exports = router

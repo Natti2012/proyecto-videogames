@@ -1,22 +1,82 @@
+.background {
+  width: 100%;
+  background-image: url('https://images4.alphacoders.com/600/thumb-1920-600528.png');
+  background-size: cover;
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  /* background-image: url('https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg') ; */
+  margin-top: -5vh;
+  margin-right: -5vw;
+ 
+
+}
 
 
-body{
-     width: 100%;
-    
-     background-image: url('https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg') ;
-    background-size: 100%;
-    background-size: cover;
-    /* background-size: 25rem; */
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed 
+
+.inicio_button {
+	box-shadow: 3px 4px 0px 0px #e63c2d;
+	background:linear-gradient(to bottom, #73322c 5%, #b73a31 100%);
+	background-color:#c62d1f;
+	border-radius:18px;
+	border:1px solid #d02718;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:40px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #810e05;
 }
-.boton{
-    color: rgb(255, 255, 255);
-    background-color: #dc3545;
-    border-color: #dc3545;
+.inicio_button:hover {
+	background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+	background-color:#f24437;
 }
-.button {
+.inicio_button:active {
+	position:relative;
+	top:1px;
+}
+.texto{
+  font-family:cursive;
+  font-size: 5rem;
+   color: rgb(79, 48, 9);
+} 
+        
+/* 
+.inicio_button {
+  color: #02020bff;
+  background: #e6aa68ff;
+  border: 4px solid rgb(26, 9, 9);
+  border-radius:15px;
+  border: none;
+  padding: 16px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  /* transition-duration: 0.4s;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+
+.inicio_button:hover {
+  background-color: rgb(60, 24, 10);
+  color: bisque;
+}
+
+.inicio_button:active {
+  background-color: #d36135ff, ;
+  box-shadow: 0 5px #ece4b7ff;
+  transform: translateY(4px);
+}
+
+/* .button {
     display: inline-block;
     padding: 15px 25px;
     font-size: 24px;
@@ -30,11 +90,4 @@ body{
     border-radius: 15px;
     box-shadow: 0 9px #999;
   }
-  
-  .button:hover {background-color: #3e8e41}
-  
-  .button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
+   */

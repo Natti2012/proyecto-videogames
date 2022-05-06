@@ -5,14 +5,14 @@ import './pagInicio.css'
 function PagInicio() {
   return (
 
-  
-      <div >
-        <h1>Welcome..!!</h1>
-        <Link to='/home'><button className='button'>Ingresar</button></Link>
-     
-
+  <section className='background'>
+    <div >
+        <h1 className='texto'>Welcome..!!</h1>
+        <Link to='/home'><button className='inicio_button'>Start</button></Link>
     </div>
 
+  </section>
+      
 
   )
 }

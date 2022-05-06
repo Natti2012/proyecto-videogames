@@ -1,9 +1,9 @@
-.card {
+.cardDetail {
     border-color: black;
-    border-radius: 10%;
+    border-radius: 6%;
     margin: 20px;
-    width: 18rem;
-    background-color: rgb(124, 116, 28);
+    width: 50%;
+    background-image: url('https://www.xtrafondos.com/thumbs/vertical/1_9571.jpg');
   
   }
   

@@ -1,0 +1,95 @@
+
+
+
+.backgroundHome{
+    width: 100%;
+   background-image: url('https://images4.alphacoders.com/653/thumb-1920-653563.jpg');
+   background-size: cover;
+  background-position: center center;
+ 
+ 
+  width: 100vw;
+}
+
+.cards {
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav{
+    
+    list-style-type: none;
+    
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #d36135ff;
+}
+li{
+    float: left;
+}
+.items{
+    display: inline-block;
+    color: #02020bff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.items:hover{
+    background-color: #e6aa68ff  ;
+}
+.nav{
+    height:6rem;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #d36135ff;
+}
+li{
+    float: left;
+}
+.items{
+    display: inline-block;
+    color: #02020bff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.items:hover{
+    background-color: #e6aa68ff  ;
+}
+.filter{
+    display: inline-block;
+    
+}
+.filter:hover{
+    background-color: red;
+    display: block;
+}
+.filter-content{
+  
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.filter-content:hover{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.content{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.content:hover{
+    background-color: wheat;
+}

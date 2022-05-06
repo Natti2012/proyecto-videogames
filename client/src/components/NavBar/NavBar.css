@@ -1,22 +1,23 @@
 .nav{
+    
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #38444d;
+    background-color: #d36135ff;
 }
 li{
     float: left;
 }
 .items{
     display: inline-block;
-    color: rgb(156, 27, 27);
+    color: #02020bff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 .items:hover{
-    background-color: red;
+    background-color: #e6aa68ff  ;
 }
 .filter{
     display: inline-block;

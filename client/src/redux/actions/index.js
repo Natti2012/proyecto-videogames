@@ -79,20 +79,21 @@ export function orderByRating(payload){
         payload
     }
 }
-export function CreateVideogame(payload){
-    return async function(dispatch) {
-       const data = await axios.post(`http://localhost:3001/videogame` , payload)
-       return data
-      }
-
-}
 // export function CreateVideogame(payload){
-//     return dispatch => {
-//         return axios.post(`http://localhost:3001/videogame` , payload)
-//           .then(res => dispatch({type: CREATE_VIDEOGAME, payload: res.data.results }))
+//     return async function(dispatch) {
+//        const data = await axios.post(`http://localhost:3001/videogame` , payload)
+
+//        return data
 //       }
 
 // }
+export function CreateVideogame(payload){
+    return dispatch => {
+        return axios.post(`http://localhost:3001/videogame` , payload)
+          .then(res => dispatch({type: CREATE_VIDEOGAME}))
+      }
+
+}
 
 
 
