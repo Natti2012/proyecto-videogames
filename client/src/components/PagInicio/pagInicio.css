@@ -1,13 +1,13 @@
 .background {
-  width: 100%;
+ 
   background-image: url('https://images4.alphacoders.com/600/thumb-1920-600528.png');
   background-size: cover;
   background-position: center center;
   background-size: cover;
   height: 100vh;
-  width: 100vw;
+  
   /* background-image: url('https://media.rawg.io/media/games/78b/78bc81e247fc7e77af700cbd632a9297.jpg') ; */
-  margin-top: -5vh;
+
   margin-right: -5vw;
  
 

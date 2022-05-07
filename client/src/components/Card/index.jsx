@@ -9,7 +9,7 @@ export default function Card ({name, image, genres,rating, id}) {
           <h1 className="card-title" ><Link to={`/videogame/${id}`}>{name}</Link></h1>
          <img className="imagen" src={image} width="100%" alt={name} />
           <h3 className='card_gen'>Genres : {genres} </h3>
-          <h3 className='card_rating'>Rating: {rating}</h3>
+          <h3 className='star-rating'>Rating: {rating}</h3>
 
         </div>
      

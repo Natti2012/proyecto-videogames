@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { Videogame, Genre} = require('../db');
 const axios = require('axios');
 const router = Router();
+const { API_KEY } = process.env
 
 const bdInfo = async () => {
     return await Videogame.findAll({

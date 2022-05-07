@@ -10,7 +10,10 @@ function NavBar() {
  
 
   return (
-    <Link to='/home' className='items'>Home</Link>
+    <div className='nav'>
+       <Link to='/home' className='letra'>Home</Link>
+    </div>
+   
 
     
   )

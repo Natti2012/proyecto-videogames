@@ -35,7 +35,7 @@ function DetailVideogame() {
   
    ( 
    <div>
-      <img src='mario.gif' width= '500px' alt='cargandoo..' />
+     
       <h1 className='cargando'>Cargando...</h1>
      </div>
     

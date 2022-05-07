@@ -59,45 +59,52 @@ function Home() {
     <div className='backgroundHome'>
       <div>
         <NavBar />
-        <div className='nav'>
-          <SearchBar />
-          <ul >
-           
-            <li><Link to='/create/videogame' className='items'>Create a Videogame</Link></li>
-            <div>
-              <select onChange={e => { handleOrderName(e) }} className='filter'>
-                <option value='all'>Alphabetic</option>
-                <option value='ascABC'>Ascendent</option>
-                <option value='descABC'>Descendent</option>
-              </select>
-              <select onChange={e => { handleOrderRating(e) }}>
-                <option value='all'>Rating</option>
-                <option value='ascRating'>Ascendent</option>
-                <option value='descRating'>Descendent</option>
-              </select>
-
-              <select onChange={e => { handleFilterGenres(e) }}>
-                <option value='genres'>Genres</option>
-                {allGenres.map(e => {
-                  return (
-                    <option key={e} value={e}>{e}</option>
-                  )
-                }
-                )}
-                <option value='genres'>Genres</option>
-              </select>
-              <select onChange={e => { handleFilterByCreation(e) }}>
-                <option value='all' >All</option>
-                <option value='created_DB'>Created</option>
-                <option value='created_Api'>Existing</option>
-              </select>
-            </div>
-
-          </ul>
+        <SearchBar />
+        <div className='navHome'>
+         <div className='create'>
+            <Link to='/create/videogame' className='link_create'>Create a Videogame</Link>
+         </div> 
+         
+         
+         <div className='All_select'>
+         
+          <div className="caja">
+          <select onChange={e => { handleOrderRating(e) }} className= 'select'>
+            <option value='all'>Rating</option>
+            <option value='ascRating'>Ascendent</option>
+            <option value='descRating'>Descendent</option>
+          </select>
+          </div>
+          <div className="caja">
+          <select onChange={e => { handleFilterGenres(e) }} className= 'select'>
+            <option value='genres'>Genres</option>
+            {allGenres.map(e => {
+              return (
+                <option key={e} value={e}>{e}</option>
+              )
+            }
+            )}
+            <option value='genres'>Genres</option>
+          </select>
+          </div>
+          <div className="caja">
+          <select onChange={e => { handleFilterByCreation(e) }} className= 'select'>
+            <option value='all' >All</option>
+            <option value='created_DB'>Created</option>
+            <option value='created_Api'>Existing</option>
+          </select>
+          </div> 
+          <div className="caja">
+          <select onChange={e => { handleOrderName(e) }} className= 'select' >
+            <option value='all'>Alphabetic</option>
+            <option value='ascABC'>Ascendent</option>
+            <option value='descABC'>Descendent</option>
+          </select>
+          <div/>
+          </div>
+           <button onClick={e => { handleClick(e) }}className=' boton_refresh'><Link to='/home' >Refresh filters</Link></button>
+          </div>
         </div>
-
-
-        <button onClick={e => { handleClick(e) }}><Link to='/home' className='items'>Refresh🔄</Link></button>
       </div>
 
       <Paginado
@@ -108,7 +115,7 @@ function Home() {
       <div className='cards'>
 
 
-        {currentsVG ?
+        {currentsVG.length !== 0 ?
 
           currentsVG.map((v) => {
             return (
@@ -124,15 +131,17 @@ function Home() {
             )
           }) :
           (
-            <div>
-              <img src='mario.gif' width='500px' alt='cargandoo..' />
-              <h1 className='cargando'>Cargando...</h1>
+            <div className='cargando'>
+             <img src='./mario.gif' alt='Cargandoo..' /> 
+              <h1 >Cargando...</h1>
             </div>
-
+  
           )
-        }
+          }
+       </div>
       </div>
-    </div>
-  )
-}
+  )}
+  
+
 export default Home
+ //   https://i.gifer.com/origin/a9/a90e81a8457d02b6a7f6fa188bf9ca4c_w200.webp

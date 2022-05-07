@@ -12,7 +12,7 @@ export function validate(input) {
   } else if (!/^[A-Za-z0-9_-]*$/.test(input.name)) {
     errors.name = 'Name is invalid: Only letters numbers and hyphens are allowed';
 
-  } if (!/^[+]?([0-3]*\.[0-9]+|[0-5])*$/.test(input.rating)) {
+  } if (!/^[+]?([0-5]*\.[0-9]+|[0-5])*$/.test(input.rating)) {
     errors.rating = 'Rating must be a value between 0 and 5';
   } if (!input.description) {
     errors.description = 'Description is required';
@@ -70,10 +70,17 @@ function Createvideogame() {
       setInput({
         ...input,
         platforms: [...input.platforms, e.target.value]
-      })
-      console.log(input)
+      }) 
+    
     }
-
+    
+ else{
+      setInput({
+        ...input,
+        platforms : input.platforms.filter((e) => e.name !== e.target.value) 
+      })
+       
+    }
   }
   function handleSelectGenres(e) {
     const genresRepeat = input.genres.includes(e.target.value)
@@ -83,24 +90,32 @@ function Createvideogame() {
         ...input,
         genres: [...input.genres, e.target.value]
       })
-
+    
     }
-  }
-
-
-  function deletePlatforms(e) {
-    const deletePlat = input.platforms.includes(e.target.value) ?
-      input.platforms.filter((e) => e.name !== e.target.value) :
-      input.platforms.push(e.target.value)
-    setInput({
-      ...input,
-      platforms: deletePlat
+    else{
+      setInput({
+        ...input,
+        genres : input.genres.filter((e) => e.name !== e.target.value) 
+      })
+    
     }
+    }
+  
 
-    )
+
+  // function deletePlatforms(e) {
+  //   const deletePlat = input.platforms.includes(e.target.value) ?
+      
+  //     input.platforms.push(e.target.value)
+  //   setInput({
+  //     ...input,
+  //     platforms: deletePlat
+  //   }
+
+  //   )
 
 
-  }
+  // }
   function handleOnSubmit(e) {
     e.preventDefault()
 
@@ -125,34 +140,46 @@ function Createvideogame() {
 
   }
   return (
-    <div className='create_backG' >
-        <NavBar />
-        <div><h3>Create videogame</h3></div>
+    <section className='create_backG' >
+       <NavBar />
+
+      <div >
+
+       
+        <div><h3>Add your vigeogame..</h3></div>
         <div>
-          <form onSubmit={e => handleOnSubmit(e)} >
+          <form onSubmit={e => handleOnSubmit(e)}className='form'>
             <div>
-              <label >Name</label>
+               <br/>
+              <label >Name
               <input
                 type="text"
                 name="name"
                 placeholder="Ingrese un nombre"
                 onChange={e => { handleInputChange(e) }}
+                className='create_input'
               />
               {errors.name && <p className="danger">{errors.name}</p>}
-              <br />
-              <label>Description</label>
+              </label>
+              <br/>
+              <label>Description
               <input type="textarea"
                 name="description"
                 placeholder='Description..'
                 onChange={e => { handleInputChange(e) }}
+                className='create_input'
               />
-              <br />
+              <br/></label>
+              
               <label>Rating</label>
 
               <input type='range'
                 name='rating'
+                min="0" max="10"
                 onChange={e => { handleInputChange(e) }}
+                className='create_input'
               />
+              
               <br />
               <div>
                 <label>Image
@@ -160,22 +187,23 @@ function Createvideogame() {
                     name='image'
 
                     onChange={e => { handleInputChange(e) }}
+                    className='create_input'
                   />
-                </label>
+                </label> 
                 <br />
+               
               </div>
-
-
-
-              <label>Released</label>
+              <label>Released
               <input type='date'
                 name="released"
                 placeholder='Releaded date...'
                 onChange={e => { handleInputChange(e) }}
-              />
+                className='create_input'
+              /></label>
             </div>
             <div>
-              <label>Platforms </label>
+            <br />
+              <label>Platforms
 
               <select onChange={e => { handleSelect(e) }}>
                 <option name='platforms' value="">Platforms</option>
@@ -186,26 +214,37 @@ function Createvideogame() {
               </select>
               <ul>
                 {input.platforms.map((e) =>
-                  <button value={input.platforms.name} onChange={(e) => deletePlatforms(e)}>{e} X</button>)}
-
-
+                <li key= {e} name= {e} value={e}>{e + ' '}
+                  <button  value={input.platforms.name} onClick={(e) => handleSelect(e)}> X</button>
+                </li>
+                  
+                  
+                )}
               </ul>
               {errors.platforms && <p className="danger">{errors.platforms}</p>}
-              <br />
+              </label>
 
-              <br />
+              
               <div>
-                <label>Genres</label>
+                <label>Genres
+                 
                 <select onChange={e => { handleSelectGenres(e) }}>
                   {allGenres.map(e => {
                     return (
-                      <option name='genres' key={e} value={e}>{e}</option>
+                    
+                        <option name='genres' key={e} value={e}>{e}</option>
+                    
+                      
                     )
 
                   })}
 
-                </select >
-                <ul><li>{input.genres.map((e) => e + "-")}</li></ul>
+                </select ></label>
+                <ul>{input.genres.map((e) =>
+
+                  <button key={e} value={input.platforms.name} onClick={(e) => handleSelectGenres(e)}>{e} X</button>
+               )}
+               </ul>
                 {errors.description && <p className="danger">{errors.description}</p>}
                 <br />
               </div>
@@ -214,7 +253,8 @@ function Createvideogame() {
             </div>
           </form>
         </div>
-    </div>
+      </div>
+    </section>
 
   )
 }

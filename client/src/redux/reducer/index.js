@@ -33,21 +33,27 @@ switch(type){
     const allVideogames = state.filterGenre
    
     const genresFilter = payload === 'genres' ? allVideogames : allVideogames.filter((e)=>{return e.genres.includes(payload)})
- console.log(allVideogames)
-    return{
+    if(genresFilter.length === 0){
+        alert('No videogames with that genre were found')
+    }else{
+     return{
         ...state,
       videogames: genresFilter
+    }   
     }
+    
     case FILTER_CREATED:
     const filterOrd = state.filterGenre
     const createdFilter = payload === 'created_DB'? filterOrd.filter((e)=>e.created === 'created_DB' ) : filterOrd.filter((e)=> e.created === 'created_Api'  )
-        
+   if(createdFilter.length === 0){
+        alert('There are no video games created')
+    }else{
     
     return{
         ...state,
         videogames: payload === 'all' ?  filterOrd : createdFilter
 
-    }
+    }}
     case ORDER_NAME:
         if(payload === 'all'){
             return{
