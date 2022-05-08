@@ -28,7 +28,7 @@ background: linear-gradient(to right, #7DCEBA 0%, #399AA4 44%, #5C68C5 100%);
 /* position:relative; */
 align-items: flex-start;
 font-family: Georgia, serif;
-font-size: 30px;
+font-size: 24px;
 letter-spacing: 0.2px;
 word-spacing: 0.2px;
 color: #1a1c1d;
@@ -90,7 +90,7 @@ input {
  padding-top: 10px;
  margin-bottom: 15px;
   }
-      .create_input {
+      /* .create_input {
     width: 10%;
     height:25px;
     line-height: 28px;
@@ -101,8 +101,8 @@ input {
     outline: none;
     background-color: #f3f3f4;
     color: #0d0c22;
-    /* transition: .3s ease; */
-   } 
+    /* transition: .3s ease; 
+   }  */
    
    .input::placeholder {
     color: #9e9ea7;

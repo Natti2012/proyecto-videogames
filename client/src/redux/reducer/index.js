@@ -45,7 +45,7 @@ switch(type){
     case FILTER_CREATED:
     const filterOrd = state.filterGenre
     const createdFilter = payload === 'created_DB'? filterOrd.filter((e)=>e.created === 'created_DB' ) : filterOrd.filter((e)=> e.created === 'created_Api'  )
-   if(createdFilter.length === 0){
+   if(createdFilter.length === 0 & payload === 'created_DB'){
         alert('There are no video games created')
     }else{
     

@@ -12,7 +12,7 @@ export function validate(input) {
   } else if (!/^[A-Za-z0-9_-]*$/.test(input.name)) {
     errors.name = 'Name is invalid: Only letters numbers and hyphens are allowed';
 
-  } if (!/^[+]?([0-5]*\.[0-9]+|[0-5])*$/.test(input.rating)) {
+  } if (!/^((0|4)((\.[0-9])|(\.?))|(5)(\.?|\.0))$/.test(input.rating)) {
     errors.rating = 'Rating must be a value between 0 and 5';
   } if (!input.description) {
     errors.description = 'Description is required';
@@ -70,17 +70,10 @@ function Createvideogame() {
       setInput({
         ...input,
         platforms: [...input.platforms, e.target.value]
-      }) 
-    
-    }
-    
- else{
-      setInput({
-        ...input,
-        platforms : input.platforms.filter((e) => e.name !== e.target.value) 
       })
-       
+      console.log(input)
     }
+
   }
   function handleSelectGenres(e) {
     const genresRepeat = input.genres.includes(e.target.value)
@@ -90,32 +83,24 @@ function Createvideogame() {
         ...input,
         genres: [...input.genres, e.target.value]
       })
-    
+
     }
-    else{
-      setInput({
-        ...input,
-        genres : input.genres.filter((e) => e.name !== e.target.value) 
-      })
-    
+  }
+
+
+  function deletePlatforms(e) {
+    const deletePlat = input.platforms.filter((el) => el.name !== e.target.value)
+
+    console.log(deletePlat)
+    setInput({
+      ...input,
+      platforms: deletePlat
     }
-    }
-  
+
+    )
 
 
-  // function deletePlatforms(e) {
-  //   const deletePlat = input.platforms.includes(e.target.value) ?
-      
-  //     input.platforms.push(e.target.value)
-  //   setInput({
-  //     ...input,
-  //     platforms: deletePlat
-  //   }
-
-  //   )
-
-
-  // }
+  }
   function handleOnSubmit(e) {
     e.preventDefault()
 
@@ -141,111 +126,115 @@ function Createvideogame() {
   }
   return (
     <section className='create_backG' >
-       <NavBar />
+      <NavBar />
 
       <div >
 
-       
+
         <div><h3>Add your vigeogame..</h3></div>
         <div>
-          <form onSubmit={e => handleOnSubmit(e)}className='form'>
+          <form onSubmit={e => handleOnSubmit(e)} className='form'>
             <div>
-               <br/>
+              <br />
               <label >Name
-              <input
-                type="text"
-                name="name"
-                placeholder="Ingrese un nombre"
-                onChange={e => { handleInputChange(e) }}
-                className='create_input'
-              />
-              {errors.name && <p className="danger">{errors.name}</p>}
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Ingrese un nombre"
+                  onChange={e => { handleInputChange(e) }}
+                  className='create_input'
+                />
+                {errors.name && <p className="danger">{errors.name}</p>}
               </label>
-              <br/>
+              <br />
               <label>Description
-              <input type="textarea"
-                name="description"
-                placeholder='Description..'
-                onChange={e => { handleInputChange(e) }}
-                className='create_input'
-              />
-              <br/></label>
-              
-              <label>Rating</label>
+                <input type="textarea"
+                  name="description"
+                  placeholder='Description..'
+                  onChange={e => { handleInputChange(e) }}
+                  className='create_input'
+                />
+                {errors.description && <p className="danger">{errors.description}</p>}
+                <br /></label>
 
-              <input type='range'
-                name='rating'
-                min="0" max="10"
-                onChange={e => { handleInputChange(e) }}
-                className='create_input'
-              />
-              
+              <label>Rating
+
+                <input
+                  list="rating" type='number' name='rating' min="0" max="5" step="any"
+                  onChange={e => { handleInputChange(e) }}
+                  className='create_input'
+               />
+                
+               
+                {errors.rating && <p className="danger">{errors.rating}</p>}
+              </label>
               <br />
               <div>
                 <label>Image
                   <input type='text'
                     name='image'
 
+
                     onChange={e => { handleInputChange(e) }}
                     className='create_input'
                   />
-                </label> 
+                  {errors.image && <p className="danger">{errors.image}</p>}
+                </label>
                 <br />
-               
+
               </div>
               <label>Released
-              <input type='date'
-                name="released"
-                placeholder='Releaded date...'
-                onChange={e => { handleInputChange(e) }}
-                className='create_input'
-              /></label>
+                <input type='date'
+                  name="released"
+                  placeholder='Releaded date...'
+                  onChange={e => { handleInputChange(e) }}
+                  className='create_input'
+                />
+                {errors.released && <p className="danger">{errors.released}</p>}
+
+              </label>
             </div>
             <div>
-            <br />
+              <br />
               <label>Platforms
 
-              <select onChange={e => { handleSelect(e) }}>
-                <option name='platforms' value="">Platforms</option>
-                <option name='platforms' value="Play Station">Play Station</option>
-                <option name='platforms' value="PC">PC</option>
-                <option name='platforms' value="Nintendo">Nintendo</option>
-                <option name='platforms' value="X-box">X-box</option>
-              </select>
-              <ul>
-                {input.platforms.map((e) =>
-                <li key= {e} name= {e} value={e}>{e + ' '}
-                  <button  value={input.platforms.name} onClick={(e) => handleSelect(e)}> X</button>
-                </li>
-                  
-                  
-                )}
-              </ul>
-              {errors.platforms && <p className="danger">{errors.platforms}</p>}
+                <select onChange={e => { handleSelect(e) }}>
+                  <option name='platforms' value="">Platforms</option>
+                  <option name='platforms' value="Play Station">Play Station</option>
+                  <option name='platforms' value="PC">PC</option>
+                  <option name='platforms' value="Nintendo">Nintendo</option>
+                  <option name='platforms' value="X-box">X-box</option>
+                </select>
+                <ul>
+                  {input.platforms.map((e) =>
+                    <div key={e + 1}>
+                      <li key={e}> {e}</li>
+                      <button type="button" value={input.platforms.name} onChange={(e) => deletePlatforms(e)}> X</button>
+                    </div>
+                  )}
+
+
+
+                </ul>
+                {errors.platforms && <p className="danger">{errors.platforms}</p>}
               </label>
 
-              
+
               <div>
                 <label>Genres
-                 
-                <select onChange={e => { handleSelectGenres(e) }}>
-                  {allGenres.map(e => {
-                    return (
-                    
+
+                  <select onChange={e => { handleSelectGenres(e) }}>
+                    {allGenres.map(e => {
+                      return (
                         <option name='genres' key={e} value={e}>{e}</option>
-                    
-                      
-                    )
+                      )
 
-                  })}
+                    })}
 
-                </select ></label>
-                <ul>{input.genres.map((e) =>
+                  </select ></label>
+                <ul><li>{input.genres.map((e) => e + "-")}</li></ul>
+                {errors.genres && <p className="danger">{errors.genres}</p>}
 
-                  <button key={e} value={input.platforms.name} onClick={(e) => handleSelectGenres(e)}>{e} X</button>
-               )}
-               </ul>
-                {errors.description && <p className="danger">{errors.description}</p>}
                 <br />
               </div>
 

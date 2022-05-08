@@ -31,7 +31,8 @@ router.get('/', async (req, res, next) => {
             id: e.id,
             name: e.name,
             image: e.background_image,
-            genres: e.genres.map(e => e.name)
+            genres: e.genres.map(e => e.name),
+            rating: e.rating
         }
     })
     const bdVg = await bdInfo()
@@ -40,7 +41,8 @@ router.get('/', async (req, res, next) => {
             id:e.id,
             name: e.name,
             image: e.image,
-            genres: e.genres.map(e => e.name)
+            genres: e.genres.map(e => e.name),
+            rating:e.rating
         }
     })
     const allVideoGame = await bdFilter.concat(ApiInfo)

@@ -132,7 +132,7 @@ function Home() {
           }) :
           (
             <div className='cargando'>
-             <img src='./mario.gif' alt='Cargandoo..' /> 
+            
               <h1 >Cargando...</h1>
             </div>
   
