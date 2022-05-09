@@ -4,7 +4,8 @@
    height: 1200px;
     background-size: cover;
    background-position: center center;
-  
+   padding: 20px;
+   box-sizing: border-box;
   
 }
 .form{

@@ -19,7 +19,7 @@ router.get('/:idVideogame', async (req, res, next) => {
             description: DataId.description_raw,
             released: DataId.released,
             rating: DataId.rating,
-            platforms: DataId.platforms.map(e => e.platform.name)
+            platforms: DataId.parent_platforms.map(e => e.platform.name)
         }
 
         return res.json(infoIdGame)

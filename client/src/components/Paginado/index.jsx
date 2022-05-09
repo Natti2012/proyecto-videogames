@@ -12,7 +12,7 @@ export default function  Paginado({VGperPage,allVideoGame,paginado}){
                     numberPage &&
                     numberPage.map(number=>(
                         <li key={number}>
-                            <button onClick={()=>paginado(number)}>  {number}</button>
+                            <button onClick={()=>paginado(number)} className='button-pag'>  {number}</button>
                         </li>
                     ))
                 }

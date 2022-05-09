@@ -19,16 +19,17 @@ function DetailVideogame() {
   },[dispatch,id])
   return (
     <>
-    <NavBar/>
-    {details.name ?
+    <NavBar className='nav-detail'/>
+    <div>
+      {details.name ?
      <CardDetail
    name = {details.name}
    image= {details.image}
-   genres= {details.genres}
+   genres= {details.genres.join(' | ')}
    description= {details.description}
   released= {details.released}
    rating= {details.rating}
-  platforms= {details.platforms}
+  platforms= {details.platforms.join(' | ')}
    
    />
    :
@@ -42,6 +43,8 @@ function DetailVideogame() {
    )
   }
     
+    
+    </div>
     </>
    
 

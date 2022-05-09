@@ -1,9 +1,117 @@
 .cardDetail {
-    border-color: black;
-    border-radius: 6%;
-    margin: 20px;
-    width: 50%;
-    background-image: url('https://www.xtrafondos.com/thumbs/vertical/1_9571.jpg');
+   position: absolute;
+   
+    margin-top: 80px;
+    margin-left: 10%;
+    width: 80%;
+    
+    border-color: rgb(104, 13, 13);
+    border-radius: 5%;
   
+    background: #14060ed2;
+    
+    -webkit-box-shadow: 5px 5px 15px 5px #f01919; 
+    box-shadow: 5px 5px 15px 5px #ef6e6e;
+  }
+  .details{
+    position: relative;
+    float:right;
+    background:transparent;
+    height: 680px;
+    width: 45%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+  .datos{
+
+    font-size: 20px;
+    color: rgba(14, 13, 13, 0.93);
+  }
+  .name-detail{
+    font-family: Georgia, serif;
+    font-size: 30px;
+    letter-spacing: 0.2px;
+    word-spacing: 0.2px;
+    color: #d77034e3;
+    
+    font-style: oblique;
+    font-variant: normal;
+    text-transform: uppercase;
+    background:transparent;
+    font-size: 24px;
+    width: 750px;
+    height: 60px;
+    margin-top: 30px;
+    margin-left: 30%;
+    
+  }
+  .image-detail{
+    position: relative;
+    float: left;
+    background:transparent;
+    width:45%;
+    height: 600px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    
+  }
+  .imagen2{
+    border-radius: 5%;
+    width: 100%;
+    margin-top:20px;
+    -webkit-box-shadow: 5px 5px 5px 10px #f019197e; 
+    box-shadow: 5px 5px 5px 8px #ef6e6e5f;
   }
   
+  .description-detail{
+    border-radius: 6%;
+    background-color: rgba(132, 70, 59, 0.557);
+    height: 80%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .texto-description{
+   
+   margin-top: 10px;
+    color: rgb(207, 207, 128);
+    font-size: 15px;
+  }
+  .titulo-description h4{
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  
+  .nav-detail{
+    position: fixed;
+    margin-bottom: 20px;
+    margin-left: 20px;
+  }
+  .rating{
+    width:200px;
+    height: 30px;
+    margin-top: -15px;
+    margin-left: 15px;
+    background-color: rgba(196, 80, 107, 0.614);
+    
+  
+  }
+  .released{
+     width:340px;
+    height: 30px;
+    margin-top:-55px;
+    margin-left: 290px;
+    background-color: rgba(196, 80, 107, 0.614);
+    
+  }
+  .datos-desc{
+    margin-top: 25px;
+    background-color: #ef6e6eae;
+   
+  }
+  .datos-desc h4{
+    color: black;
+  }

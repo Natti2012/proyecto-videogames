@@ -6,10 +6,17 @@ export default function Card ({name, image, genres,rating, id}) {
     return (
       
         <div className="card">
-          <h1 className="card-title" ><Link to={`/videogame/${id}`}>{name}</Link></h1>
-         <img className="imagen" src={image} width="100%" alt={name} />
-          <h3 className='card_gen'>Genres : {genres} </h3>
-          <h3 className='star-rating'>Rating: {rating}</h3>
+          <div className="card-title" >
+            <h1 ><Link to={`/videogame/${id}`}>{name}</Link></h1>
+          </div>
+          <div className="imagen">
+            <img  src={image} width="100%" alt={name} />
+          </div>
+         <div className='card-date'>
+           <h3>Genres : {genres} </h3>
+            <h3>Rating: {rating}</h3>
+         </div>
+         
 
         </div>
      

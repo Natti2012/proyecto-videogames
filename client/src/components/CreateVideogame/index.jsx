@@ -9,10 +9,10 @@ export function validate(input) {
   let errors = {};
   if (!input.name) {
     errors.name = 'Name is required';
-  } else if (!/^[A-Za-z0-9_-]*$/.test(input.name)) {
+  } else if (!/^[A-Za-z0-9_-\s]*$/.test(input.name)) {
     errors.name = 'Name is invalid: Only letters numbers and hyphens are allowed';
 
-  } if (!/^((0|4)((\.[0-9])|(\.?))|(5)(\.?|\.0))$/.test(input.rating)) {
+  } if (!/^([0-4]((\.[0-9])|(\.?))|(5)(\.?|\.0))$/.test(input.rating)) {
     errors.rating = 'Rating must be a value between 0 and 5';
   } if (!input.description) {
     errors.description = 'Description is required';
@@ -126,7 +126,7 @@ function Createvideogame() {
   }
   return (
     <section className='create_backG' >
-      <NavBar />
+      <NavBar className='nav-detail' margin-top="20px"/>
 
       <div >
 
@@ -140,7 +140,7 @@ function Createvideogame() {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Ingrese un nombre"
+                  placeholder="Enter a name"
                   onChange={e => { handleInputChange(e) }}
                   className='create_input'
                 />
@@ -150,7 +150,7 @@ function Createvideogame() {
               <label>Description
                 <input type="textarea"
                   name="description"
-                  placeholder='Description..'
+                  placeholder='Enter a Description..'
                   onChange={e => { handleInputChange(e) }}
                   className='create_input'
                 />
@@ -161,6 +161,7 @@ function Createvideogame() {
 
                 <input
                   list="rating" type='number' name='rating' min="0" max="5" step="any"
+                  placeholder='Number between 0 and 5'
                   onChange={e => { handleInputChange(e) }}
                   className='create_input'
                />
@@ -173,6 +174,7 @@ function Createvideogame() {
                 <label>Image
                   <input type='text'
                     name='image'
+                    placeholder='Enter image URL..'
 
 
                     onChange={e => { handleInputChange(e) }}
@@ -199,7 +201,7 @@ function Createvideogame() {
               <label>Platforms
 
                 <select onChange={e => { handleSelect(e) }}>
-                  <option name='platforms' value="">Platforms</option>
+                  <option >Platforms</option>
                   <option name='platforms' value="Play Station">Play Station</option>
                   <option name='platforms' value="PC">PC</option>
                   <option name='platforms' value="Nintendo">Nintendo</option>

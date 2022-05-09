@@ -13,7 +13,7 @@ export function getVideogames(name){
             }
            
         } catch (e) {
-            return console.log(e);
+            throw Error(e);
         }
     }
 }

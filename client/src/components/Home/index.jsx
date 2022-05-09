@@ -57,18 +57,19 @@ function Home() {
   }
   return (
     <div className='backgroundHome'>
-      <div>
-        <NavBar />
-        <SearchBar />
+      <div className='navTotal'>
         <div className='navHome'>
-         <div className='create'>
-            <Link to='/create/videogame' className='link_create'>Create a Videogame</Link>
-         </div> 
+            <NavBar />
+           <SearchBar />
+       
+          <div className='create'>
+            <Link to='/create/videogame' >Create a Videogame</Link>
+         </div>
          
-         
+        
+       </div>
          <div className='All_select'>
-         
-          <div className="caja">
+ <div className="caja">
           <select onChange={e => { handleOrderRating(e) }} className= 'select'>
             <option value='all'>Rating</option>
             <option value='ascRating'>Ascendent</option>
@@ -89,7 +90,7 @@ function Home() {
           </div>
           <div className="caja">
           <select onChange={e => { handleFilterByCreation(e) }} className= 'select'>
-            <option value='all' >All</option>
+            <option value='all' >Creation Origin</option>
             <option value='created_DB'>Created</option>
             <option value='created_Api'>Existing</option>
           </select>
@@ -102,15 +103,22 @@ function Home() {
           </select>
           <div/>
           </div>
-           <button onClick={e => { handleClick(e) }}className=' boton_refresh'><Link to='/home' >Refresh filters</Link></button>
+          <div className="caja">
+             <button onClick={e => { handleClick(e) }}className=' boton_refresh'><Link to='/home' >Refresh filters</Link></button>
           </div>
-        </div>
+       </div>
+        
+         
+         
+         
+         
       </div>
-
-      <Paginado
+      <div>
+        <Paginado
         VGperPage={VGperPage}
         allVideoGame={allVideoGame.length}
         paginado={paginado}
+        className='pagination'
       />
       <div className='cards'>
 
@@ -138,6 +146,8 @@ function Home() {
   
           )
           }
+      </div>
+      
        </div>
       </div>
   )}

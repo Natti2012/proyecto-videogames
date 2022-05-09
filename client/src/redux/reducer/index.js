@@ -7,11 +7,16 @@ const inicialState={
 }
 function  rootReducer (state= inicialState, {type, payload}){
 switch(type){
-    case GET_VIDEOGAMES : return{
+    case GET_VIDEOGAMES : 
+    if(payload.length === 0  ) alert(payload)
+    else{
+       return{
         ...state,
         videogames: payload,
         filterGenre: payload
-    };
+    }; 
+    }
+    
     case GET_DETAILS_VIDEOGAMES: return{
          ...state,
        details: payload
