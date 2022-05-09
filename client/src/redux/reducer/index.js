@@ -49,16 +49,35 @@ switch(type){
     
     case FILTER_CREATED:
     const filterOrd = state.filterGenre
-    const createdFilter = payload === 'created_DB'? filterOrd.filter((e)=>e.created === 'created_DB' ) : filterOrd.filter((e)=> e.created === 'created_Api'  )
-   if(createdFilter.length === 0 & payload === 'created_DB'){
-        alert('There are no video games created')
-    }else{
+    const createdApi= filterOrd.filter((e)=> e.created === 'created_Api' )
+    const createdDB=filterOrd.filter((e)=>e.created === 'created_DB')
+
     
+   if(payload === 'created_DB'){
+     if(createdDB.length !== 0){
+         return{
+        ...state,
+        videogames: createdDB
+    }
+     } alert('There are no video games created')
+    
+       
+    }else if(payload === 'created_Api'){
+     if(createdApi.length !== 0){
     return{
         ...state,
-        videogames: payload === 'all' ?  filterOrd : createdFilter
+        videogames: createdApi
 
-    }}
+       }} 
+       alert('There are no video games created')
+       }
+       else{
+            return{
+        ...state,
+        videogames: filterOrd
+
+       }
+       }
     case ORDER_NAME:
         if(payload === 'all'){
             return{

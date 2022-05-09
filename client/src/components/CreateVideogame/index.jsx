@@ -19,10 +19,7 @@ export function validate(input) {
   } if (!/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(input.image)) {
     errors.image = 'Invalid image: URL format required '
   }
-  if (input.platforms.length === 0) {
-    errors.platforms = 'Platforms is required';
-
-  } if (!/(0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2}$/.test(input.released)) {
+   if (!/(0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2}$/.test(input.released)) {
     errors.released = 'Released date is invalid'
   }
 
@@ -103,9 +100,7 @@ function Createvideogame() {
   }
   function handleOnSubmit(e) {
     e.preventDefault()
-
-
-    if (Object.keys(errors).length === 0 && input.name && input.description && input.platforms) {
+    if (Object.keys(errors).length === 0 && input.name && input.description && input.platforms.length !== 0) {
       dispatch(CreateVideogame(input))
       console.log(input)
       alert('Videogame creado')
@@ -120,13 +115,14 @@ function Createvideogame() {
       })
       history.push('/home')
     } else {
-      alert('The videogame cannot be created. Check the data entered')
+     
+      alert('The videogame cannot be created. Check the data entered.   Name, platform and description are required')
     }
 
   }
   return (
     <section className='create_backG' >
-      <NavBar className='nav-detail' margin-top="20px"/>
+      <NavBar className='nav-detail' margin-top="20px" />
 
       <div >
 
@@ -164,9 +160,9 @@ function Createvideogame() {
                   placeholder='Number between 0 and 5'
                   onChange={e => { handleInputChange(e) }}
                   className='create_input'
-               />
-                
-               
+                />
+
+
                 {errors.rating && <p className="danger">{errors.rating}</p>}
               </label>
               <br />
@@ -183,6 +179,28 @@ function Createvideogame() {
                   {errors.image && <p className="danger">{errors.image}</p>}
                 </label>
                 <br />
+                <label>Platforms
+
+                  <select onChange={e => { handleSelect(e) }}>
+                    <option >Platforms</option>
+                    <option name='platforms' value="Play Station">Play Station</option>
+                    <option name='platforms' value="PC">PC</option>
+                    <option name='platforms' value="Nintendo">Nintendo</option>
+                    <option name='platforms' value="X-box">X-box</option>
+                  </select>
+                  <ul>
+                    {input.platforms.map((e) =>
+                      <div key={e + 1}>
+                        <li key={e}> {e}</li>
+                        <button type="button" value={input.platforms.name} onChange={(e) => deletePlatforms(e)}> X</button>
+                      </div>
+                    )}
+
+
+
+                  </ul>
+                  {errors.platforms && <p className="danger">{errors.platforms}</p>}
+                </label>
 
               </div>
               <label>Released
@@ -198,28 +216,6 @@ function Createvideogame() {
             </div>
             <div>
               <br />
-              <label>Platforms
-
-                <select onChange={e => { handleSelect(e) }}>
-                  <option >Platforms</option>
-                  <option name='platforms' value="Play Station">Play Station</option>
-                  <option name='platforms' value="PC">PC</option>
-                  <option name='platforms' value="Nintendo">Nintendo</option>
-                  <option name='platforms' value="X-box">X-box</option>
-                </select>
-                <ul>
-                  {input.platforms.map((e) =>
-                    <div key={e + 1}>
-                      <li key={e}> {e}</li>
-                      <button type="button" value={input.platforms.name} onChange={(e) => deletePlatforms(e)}> X</button>
-                    </div>
-                  )}
-
-
-
-                </ul>
-                {errors.platforms && <p className="danger">{errors.platforms}</p>}
-              </label>
 
 
               <div>
