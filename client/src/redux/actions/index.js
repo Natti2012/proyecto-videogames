@@ -13,7 +13,7 @@ export function getVideogames(name){
             }
            
         } catch (e) {
-            throw Error(e);
+           alert('Not found video game');
         }
     }
 }

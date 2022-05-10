@@ -68,36 +68,53 @@ function Createvideogame() {
         ...input,
         platforms: [...input.platforms, e.target.value]
       })
-      console.log(input)
-    }
+      setErrors(validate({
+          ...input,
+          platforms: [...input.platforms, e.target.value]
+        }))
+    }else{
+        setInput({
+          ...input, 
+          platforms: input.platforms.filter((g => g !== e.target.value))
+        })
+        setErrors(validate({
+          ...input,
+          platforms: [...input.platforms, e.targe]
+        }))
+
+      }
 
   }
   function handleSelectGenres(e) {
-    const genresRepeat = input.genres.includes(e.target.value)
-
-    if (!genresRepeat) {
-      setInput({
-        ...input,
-        genres: [...input.genres, e.target.value]
-      })
-
-    }
-  }
 
 
-  function deletePlatforms(e) {
-    const deletePlat = input.platforms.filter((el) => el.name !== e.target.value)
+    
+      const genresRepeat = input.genres.includes(e.target.value)
+      if(!genresRepeat){
+        setInput({
+          ...input,
+          genres: [...input.genres, e.target.value]
+        })
+        setErrors(validate({
+          ...input,
+          genres: [...input.genres, e.target.value]
+        }))
+      }else{
+        setInput({
+          ...input, 
+          genres: input.genres.filter((g => g !== e.target.value))
+        })
+        setErrors(validate({
+          ...input,
+          genres: [...input.genres, e.targe]
+        }))
 
-    console.log(deletePlat)
-    setInput({
-      ...input,
-      platforms: deletePlat
-    }
-
-    )
+      }}
+      
 
 
-  }
+
+
   function handleOnSubmit(e) {
     e.preventDefault()
     if (Object.keys(errors).length === 0 && input.name && input.description && input.platforms.length !== 0) {
@@ -191,13 +208,10 @@ function Createvideogame() {
                   <ul>
                     {input.platforms.map((e) =>
                       <div key={e + 1}>
-                        <li key={e}> {e}</li>
-                        <button type="button" value={input.platforms.name} onChange={(e) => deletePlatforms(e)}> X</button>
+                        <li key={e} name={e} value={e}> {e}</li>
+                        <button value={e} onClick={handleSelect}> X</button>
                       </div>
                     )}
-
-
-
                   </ul>
                   {errors.platforms && <p className="danger">{errors.platforms}</p>}
                 </label>
@@ -230,7 +244,16 @@ function Createvideogame() {
                     })}
 
                   </select ></label>
-                <ul><li>{input.genres.map((e) => e + "-")}</li></ul>
+                  
+                  <ul>
+                    {input.genres.map((e) =>
+                      <div key={e + 1}>
+                        <li key={e} name={e} value={e}> {e}</li>
+                        <button value={e} onClick={handleSelectGenres}> X</button>
+                      </div>
+                    )}
+                  </ul>
+           
                 {errors.genres && <p className="danger">{errors.genres}</p>}
 
                 <br />
@@ -247,4 +270,3 @@ function Createvideogame() {
 }
 
 export default Createvideogame
-//{ name, description, platforms, released, rating, image, genres 

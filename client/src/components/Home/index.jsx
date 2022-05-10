@@ -137,7 +137,9 @@ function Home() {
                 />
               </div>
             )
-          }) :
+          })  
+
+                         :
           (
             <div className='cargando'>
             
