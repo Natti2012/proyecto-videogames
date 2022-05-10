@@ -9,11 +9,11 @@ export function getVideogames(name){
                return dispatch({ type: GET_VIDEOGAMES, payload: resName.data })
             }else{
                  const res = await axios.get(`http://localhost:3001/videogames`)
-            return dispatch({ type: GET_VIDEOGAMES, payload: res.data });
+            return dispatch({ type: GET_VIDEOGAMES,payload: res.data  });
             }
            
         } catch (e) {
-           alert('Not found video game');
+         alert('The requested video game was not found')
         }
     }
 }
@@ -33,12 +33,6 @@ export function getDetails(id){
 export function clearPage(){
     return{
         type: CLEAR_PAGE
-    }
-}
-
-export function clearSearch(){
-    return{
-        type: CLEAR_SEARCH
     }
 }
 export function getAllGenres(){
@@ -88,11 +82,16 @@ export function orderByRating(payload){
 
 // }
 export function CreateVideogame(payload){
-    return dispatch => {
-        return axios.post(`http://localhost:3001/videogame` , payload)
-          .then(res => dispatch({type: CREATE_VIDEOGAME}))
-      }
-
+    return async dispatch => {
+        try {
+        const res = await axios.post(`http://localhost:3001/videogame`, payload);
+        return dispatch({ type: CREATE_VIDEOGAME });
+        
+        } catch (error) {
+            throw error
+        }
+        
+ } 
 }
 
 

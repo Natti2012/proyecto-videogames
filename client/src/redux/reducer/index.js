@@ -1,4 +1,4 @@
-import{CLEAR_PAGE, GET_DETAILS_VIDEOGAMES, GET_VIDEOGAMES, CLEAR_SEARCH, FILTER_GENRES, ALL_GENRES, FILTER_CREATED, ORDER_NAME, ORDER_RATING, CREATE_VIDEOGAME} from '../actions/actionsTypes'
+import{CLEAR_PAGE, GET_DETAILS_VIDEOGAMES, GET_VIDEOGAMES, FILTER_GENRES, ALL_GENRES, FILTER_CREATED, ORDER_NAME, ORDER_RATING, CREATE_VIDEOGAME} from '../actions/actionsTypes'
 const inicialState={
     videogames : [],
     details: {},
@@ -8,14 +8,14 @@ const inicialState={
 function  rootReducer (state= inicialState, {type, payload}){
 switch(type){
     case GET_VIDEOGAMES : 
-    if(payload.length === 0  ) alert(payload)
-    else{
+   if(payload)
+   console.log(payload)
        return{
         ...state,
         videogames: payload,
         filterGenre: payload
     }; 
-    }
+    
     
     case GET_DETAILS_VIDEOGAMES: return{
          ...state,
@@ -26,10 +26,7 @@ switch(type){
         ...state,
         details: {}
     }
-    case CLEAR_SEARCH: return{
-        ...state,
-        videogames:[]
-    }
+   
     case ALL_GENRES:return{
         ...state,
         genres: payload
@@ -78,6 +75,7 @@ switch(type){
 
        }
        }
+      
     case ORDER_NAME:
         if(payload === 'all'){
             return{
@@ -105,6 +103,7 @@ switch(type){
                 })
             }
         }
+    
         
         case ORDER_RATING:
             if(payload === 'all'){

@@ -16,7 +16,7 @@ export function validate(input) {
     errors.rating = 'Rating must be a value between 0 and 5';
   } if (!input.description) {
     errors.description = 'Description is required';
-  } if (!/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(input.image)) {
+  } if (!/^(https?:\/\/)?([\da-z-]+)\.([a-z]{2,6})([\w -]*)*\/?$/.test(input.image)) {
     errors.image = 'Invalid image: URL format required '
   }
    if (!/(0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2}$/.test(input.released)) {
@@ -199,7 +199,7 @@ function Createvideogame() {
                 <label>Platforms
 
                   <select onChange={e => { handleSelect(e) }}>
-                    <option >Platforms</option>
+                    <option selected>Platforms</option>
                     <option name='platforms' value="Play Station">Play Station</option>
                     <option name='platforms' value="PC">PC</option>
                     <option name='platforms' value="Nintendo">Nintendo</option>
@@ -238,7 +238,7 @@ function Createvideogame() {
                   <select onChange={e => { handleSelectGenres(e) }}>
                     {allGenres.map(e => {
                       return (
-                        <option name='genres' key={e} value={e}>{e}</option>
+                        <option name='genres' key={e} value={e} selected>{e}</option>
                       )
 
                     })}
