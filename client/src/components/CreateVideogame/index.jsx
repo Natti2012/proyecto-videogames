@@ -16,12 +16,13 @@ export function validate(input) {
     errors.rating = 'Rating must be a value between 0 and 5';
   } if (!input.description) {
     errors.description = 'Description is required';
-  } if (!/^(https?:\/\/)?([\da-z-]+)\.([a-z]{2,6})([\w -]*)*\/?$/.test(input.image)) {
-    errors.image = 'Invalid image: URL format required '
   }
-   if (!/(0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2}$/.test(input.released)) {
+  if (!/(0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2}$/.test(input.released)) {
     errors.released = 'Released date is invalid'
   }
+  if (!/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(input.image)) {
+    errors.image = 'Invalid image: URL format required '}
+  
 
   return errors;
 }
@@ -119,16 +120,16 @@ function Createvideogame() {
     e.preventDefault()
     if (Object.keys(errors).length === 0 && input.name && input.description && input.platforms.length !== 0) {
       dispatch(CreateVideogame(input))
-      console.log(input)
+     
       alert('Videogame creado')
       setInput({
-        name: '',
-        description: '',
-        platforms: [],
-        released: '',
-        rating: '',
-        image: '',
-        genres: []
+        name: null,
+    description: null,
+    platforms: [],
+    released: null,
+    rating: 0,
+    image: null,
+    genres: []
       })
       history.push('/home')
     } else {
@@ -199,7 +200,7 @@ function Createvideogame() {
                 <label>Platforms
 
                   <select onChange={e => { handleSelect(e) }}>
-                    <option selected>Platforms</option>
+                    <option >Platforms</option>
                     <option name='platforms' value="Play Station">Play Station</option>
                     <option name='platforms' value="PC">PC</option>
                     <option name='platforms' value="Nintendo">Nintendo</option>
@@ -220,7 +221,7 @@ function Createvideogame() {
               <label>Released
                 <input type='date'
                   name="released"
-                  placeholder='Releaded date...'
+                  placeholder='Releaded date...yyyy-mm-dd'
                   onChange={e => { handleInputChange(e) }}
                   className='create_input'
                 />
@@ -234,11 +235,11 @@ function Createvideogame() {
 
               <div>
                 <label>Genres
-
+                   <option name='genres' >Genres</option>
                   <select onChange={e => { handleSelectGenres(e) }}>
                     {allGenres.map(e => {
                       return (
-                        <option name='genres' key={e} value={e} selected>{e}</option>
+                        <option name='genres' key={e} value={e}>{e}</option>
                       )
 
                     })}

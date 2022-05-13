@@ -39,7 +39,7 @@ module.exports = (sequelize) => {
     },
     image:{
      type: DataTypes.STRING,
-     defaultValue:('https://i.pinimg.com/474x/1a/b7/51/1ab75139f3b1e6ecc1f59ffc2a4b0f2e--mario-bros-mario-kart.jpg')
+     defaultValue: 'https://i.pinimg.com/474x/1a/b7/51/1ab75139f3b1e6ecc1f59ffc2a4b0f2e--mario-bros-mario-kart.jpg'
     },
    
   },

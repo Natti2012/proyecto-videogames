@@ -16,13 +16,13 @@ function Home() {
   const allGenres = useSelector(state => state.genres)
   const [currentPage, setCurrentPage] = useState(1)
   const [VGperPage] = useState(15)
-  const indexLastVG = currentPage * VGperPage
-  const indexFirstVG = indexLastVG - VGperPage
+  const indexLastVG = currentPage * VGperPage   //  1 * 15
+  const indexFirstVG = indexLastVG - VGperPage  //   15 - 15 
   const currentsVG = allVideoGame.slice(indexFirstVG, indexLastVG)
 
 
   const paginado = (numberPage) => (
-    setCurrentPage(numberPage)
+    setCurrentPage(numberPage)            
   )
   useEffect(() => {
     dispatch(getVideogames())

@@ -2,8 +2,8 @@ import React from 'react'
 import './paginado.css'
 export default function  Paginado({VGperPage,allVideoGame,paginado}){
     const  numberPage =[]
-    for (let i = 0; i < Math.ceil(allVideoGame/VGperPage); i++){
-        numberPage.push(i+1)
+    for (let i = 1; i < Math.ceil(allVideoGame/VGperPage); i++){
+        numberPage.push(i)
     }
     return(
         <nav>

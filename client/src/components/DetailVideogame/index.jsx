@@ -11,9 +11,10 @@ function DetailVideogame() {
   const{id}= useParams()
   const dispatch = useDispatch();
   const details = useSelector(state=>state.details)
+  
   useEffect(()=>{
     dispatch(getDetails(id))
-    return () => { //TODO LO QUE SUCEDA DENTRO DEL RETURN ES CUANDO SE DESMONTA EL COMPONENTE
+    return () => {
       dispatch(clearPage())
     }
   },[dispatch,id])
