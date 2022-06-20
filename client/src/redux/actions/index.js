@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CLEAR_PAGE, GET_DETAILS_VIDEOGAMES, GET_VIDEOGAMES, FILTER_GENRES, ALL_GENRES, FILTER_CREATED, ORDER_NAME, ORDER_RATING, CREATE_VIDEOGAME } from "./actionsTypes";
+import { CLEAR_PAGE, GET_DETAILS_VIDEOGAMES, GET_VIDEOGAMES, FILTER_GENRES, ALL_GENRES, FILTER_CREATED, ORDER_NAME, ORDER_RATING, CREATE_VIDEOGAME, DELETE, UPDATE_VG } from "./actionsTypes";
 
 export function getVideogames(name){
     return async dispatch=>{
@@ -77,14 +77,37 @@ export function CreateVideogame(payload){
     return async dispatch => {
         try {
         const res = await axios.post(`http://localhost:3001/videogame`, payload);
-        return dispatch({ type: CREATE_VIDEOGAME }, payload= res.data);
+        return dispatch({ type: CREATE_VIDEOGAME , payload: res.data});
         
         } catch (res) {
-        return dispatch({ type: CREATE_VIDEOGAME }, payload= res.data)
+        return dispatch({ type: CREATE_VIDEOGAME , payload: res.data})
         }
         
  } 
 }
 
-
+export function deleteVg(id ,payload){
+    return async dispatch => {
+        try {
+        const res = await axios.delete(`http://localhost:3001/videogame/${id}`, payload);
+        return dispatch({ type: DELETE , payload: res.data}, );
+        
+        } catch (e) {
+        console.log(e); 
+        }
+        
+ } 
+}
+export function updateVg(id,payload){
+    return async dispatch => {
+        try {
+        const res = await axios.put(`http://localhost:3001/videogame/${id}`, payload);
+        return dispatch({ type: UPDATE_VG , payload: res.data}, );
+        
+        } catch (e) {
+        console.log(e); 
+        }
+        
+ } 
+}
 

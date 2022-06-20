@@ -1,8 +1,25 @@
 import React from 'react';
 import './Card.css';
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
+import { useDispatch } from "react-redux";
+import { deleteVg, getVideogames, updateVg } from '../../redux/actions';
 
-export default function Card ({name, image, genres,rating, id}) {
+
+export default function Card ({name, image, id, genres,rating,created }) {
+  const history= useHistory()
+  const dispatch= useDispatch()
+
+  function handleDelete(e) {
+  
+    e.preventDefault();
+    dispatch(deleteVg(id))
+   
+    dispatch(getVideogames())
+    history.push('./home')
+     alert('juego borrado')
+  }
+
+  
     return (
       
         <div className="card">
@@ -16,7 +33,12 @@ export default function Card ({name, image, genres,rating, id}) {
            <h3>Genres : {genres} </h3>
             <h3>Rating: {rating}</h3>
          </div>
+         {created=== 'created_DB'?
          
+         <div><button value = {name} onClick={e =>  handleDelete(e) } className=' search_button'>Delete</button></div> 
+         
+          : null
+         }
 
         </div>
      

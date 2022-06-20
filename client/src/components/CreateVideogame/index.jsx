@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { CreateVideogame, getAllGenres, getVideogames } from '../../redux/actions'
+import { CreateVideogame, getAllGenres, getVideogames, updateVg } from '../../redux/actions'
 import NavBar from '../NavBar'
 import './CreateVideo.css'
+import { useParams } from 'react-router-dom'; 
 
 export function validate(input) {
   let errors = {};
@@ -29,15 +30,18 @@ export function validate(input) {
 
 
 function Createvideogame() {
+  const allVideogames= useSelector(state => state.videogames)
+ const{id}= useParams()
+ const vgId= allVideogames.find(e=>e.id === id)
   const allGenres = useSelector(state => state.genres)
   const [input, setInput] = useState({
     name: null,
     description: null,
-    platforms: [],
+    platforms:[],
     released: null,
-    rating: 0,
+    rating: null,
     image: null,
-    genres: []
+    genres:[]
   })
 
   const [errors, setErrors] = useState({})
@@ -63,7 +67,8 @@ function Createvideogame() {
     }));
   }
   function handleSelect(e) {
-    const platRepeat = input.platforms.includes(e.target.value)
+    
+    const platRepeat = input.platforms?.includes(e.target.value)
     if (!platRepeat) {
       setInput({
         ...input,
@@ -87,10 +92,10 @@ function Createvideogame() {
 
   }
   function handleSelectGenres(e) {
-
+    
 
     
-      const genresRepeat = input.genres.includes(e.target.value)
+      const genresRepeat = input.genres?.includes(e.target.value)
       if(!genresRepeat){
         setInput({
           ...input,
@@ -113,10 +118,38 @@ function Createvideogame() {
       }}
       
 
+ 
+ 
 
 
+  function handleOnSubmit(e){
+    
+     if(id !== '0'){
+    e.preventDefault();
+    input.platforms === []?input.platforms=vgId.platforms : vgId.platforms?.push(input.platforms)
+    input.genres === []?input.genres=vgId.genres : vgId.genres?.push(input.genres)
+    let inputArr = Object.entries(input)
+    let inputFilt = inputArr.filter((e=>!e.includes(null) ))
+    const obj = Object.fromEntries(inputFilt);
+    console.log(obj)
+ 
+    dispatch(updateVg(id, obj))
+   alert('juego editado con exito')
+     setInput({
+    name: null,
+description: null,
+platforms:[],
+released: null,
+rating: null,
+image: null,
+genres: []
+  })
+  history.push('../../home')
+    
+  
 
-  function handleOnSubmit(e) {
+ }else{
+   
     e.preventDefault()
     if (Object.keys(errors).length === 0 && input.name && input.description && input.platforms.length !== 0) {
       dispatch(CreateVideogame(input))
@@ -137,17 +170,22 @@ function Createvideogame() {
       alert('The videogame cannot be created. Check the data entered.   Name, platform and description are required')
     }
 
-  }
+  }}
   return (
     <section className='create_backG' >
       <NavBar className='nav-detail' margin-top="20px" />
 
       <div >
-
-
-        <div><h3>Add your vigeogame..</h3></div>
+ 
+       { id === '0' ? <div className='titulo_form'><h3>Add your vigeogame..</h3></div>
+        : 
+       
+        <div className='titulo_form'><h3>Update videgogame</h3></div>
+        }
         <div>
-          <form onSubmit={e => handleOnSubmit(e)} className='form'>
+          <form 
+          
+            onSubmit={e => handleOnSubmit(e)} className='form'>
             <div>
               <br />
               <label >Name
@@ -201,10 +239,28 @@ function Createvideogame() {
 
                   <select onChange={e => { handleSelect(e) }}>
                     <option >Platforms</option>
-                    <option name='platforms' value="Play Station">Play Station</option>
                     <option name='platforms' value="PC">PC</option>
+                    <option name='platforms' value="PlayStation">PlayStation</option>
+                    <option name='platforms' value="Xbox">Xbox</option>
                     <option name='platforms' value="Nintendo">Nintendo</option>
-                    <option name='platforms' value="X-box">X-box</option>
+                     <option name='platforms' value="iOS">iOS</option>
+                    <option name='platforms' value="Android">Android</option>
+                    <option name='platforms' value="Apple Macintosh">Apple Macintosh</option>
+                    <option name='platforms' value="Linux">Linux</option>
+                    <option name='platforms' value="Atari">Atari</option>
+                    <option name='platforms' value="Commodore / Amiga">Commodore / Amiga</option>
+                    <option name='platforms' value="SEGA">SEGA</option>
+                    <option name='platforms' value="3DO">3DO</option>
+                    <option name='platforms' value="Nintendo">Neo Geo</option>
+                    <option name='platforms' value="Web">Web</option>
+                    
+
+
+
+
+
+
+                    
                   </select>
                   <ul>
                     {input.platforms.map((e) =>
@@ -237,7 +293,7 @@ function Createvideogame() {
                 <label>Genres
                    <option name='genres' >Genres</option>
                   <select onChange={e => { handleSelectGenres(e) }}>
-                    {allGenres.map(e => {
+                    {allGenres?.map(e => {
                       return (
                         <option name='genres' key={e} value={e}>{e}</option>
                       )
@@ -247,20 +303,34 @@ function Createvideogame() {
                   </select ></label>
                   
                   <ul>
-                    {input.genres.map((e) =>
+                    {id? 
+                    vgId.genres?.map((e) =>
                       <div key={e + 1}>
                         <li key={e} name={e} value={e}> {e}</li>
                         <button value={e} onClick={handleSelectGenres}> X</button>
                       </div>
-                    )}
+                    ) :
+
+                    input.genres.map((e) =>
+                      <div key={e + 1}>
+                        <li key={e} name={e} value={e}> {e}</li>
+                        <button value={e} onClick={handleSelectGenres}> X</button>
+                      </div>
+                    )
+                  
+                  }
+                    
                   </ul>
            
                 {errors.genres && <p className="danger">{errors.genres}</p>}
 
                 <br />
               </div>
-
+              { id === '0'?
               <button type="submit" className='createButton'>Create Videogame</button>
+              :
+              <button type="submit" className='createButton'>Update Videogame</button>
+                    }
             </div>
           </form>
         </div>

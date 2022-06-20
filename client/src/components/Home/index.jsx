@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './home.css'
-import { filterByCreated, filterByGenres, getAllGenres, getVideogames, orderByName } from '../../redux/actions'
+import { deleteVg, filterByCreated, filterByGenres, getAllGenres, getVideogames, orderByName } from '../../redux/actions'
 import Card from '../Card'
 import Paginado from '../Paginado';
 import NavBar from '../NavBar'
@@ -55,6 +55,7 @@ function Home() {
     dispatch(orderByName(e.target.value))
     setCurrentPage(1);
   }
+ 
   return (
     <div className='backgroundHome'>
       <div className='navTotal'>
@@ -63,7 +64,7 @@ function Home() {
            <SearchBar />
        
           <div className='create'>
-            <Link to='/create/videogame' >Create a Videogame</Link>
+            <Link to='/create/videogame/0' >Create a Videogame</Link>
          </div>
          
         
@@ -90,7 +91,7 @@ function Home() {
           </div>
           <div className="caja">
           <select onChange={e => { handleFilterByCreation(e) }} className= 'select'>
-            <option value='all' >Creation Origin</option>
+            <option value='all' >Creation</option>
             <option value='created_DB'>Created</option>
             <option value='created_Api'>Existing</option>
           </select>
@@ -128,12 +129,16 @@ function Home() {
           currentsVG.map((v) => {
             return (
               <div key={v.id} >
+                
                 <Card
+                
                   id={v.id}
                   rating={v.rating}
                   name={v.name}
                   image={v.image}
                   genres={v.genres.join(' ')}
+                  created= {v.created}
+                  
                 />
               </div>
             )

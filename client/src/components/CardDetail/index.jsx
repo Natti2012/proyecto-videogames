@@ -1,13 +1,25 @@
 import React from 'react';
 import './CardDetail.css';
+import { Link, useHistory} from 'react-router-dom'
+import { useDispatch } from "react-redux";
+import { getVideogames, updateVg } from '../../redux/actions';
 
 
-export default function CardDetail ({name, image, genres, released, description,rating, platforms}) {
+export default function CardDetail ({id, name, image, genres, released, description,rating, platforms, created}) {
+
+ 
     return (
      <div>
       <div className='name-detail'>
         <h2>{name}</h2>
+        {created=== 'created_DB'?
+         <h1><Link to={`/create/videogame/${id}`}>Update</Link></h1>
+        //  <div><button value = {name} onClick={e =>  handleUpdate(e) } className='search_button'>Update</button></div> 
+         
+          : null
+         }
       </div>
+      
         <div className='cardDetail'>
       <div className='image-detail'>
         <img src={image}   alt={name} className='imagen2'/>
@@ -24,6 +36,7 @@ export default function CardDetail ({name, image, genres, released, description,
        <div className='texto-description'>
          {description}
        </div>
+       
       </div>
       
       

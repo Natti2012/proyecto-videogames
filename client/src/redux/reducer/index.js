@@ -1,4 +1,4 @@
-import{CLEAR_PAGE, GET_DETAILS_VIDEOGAMES, GET_VIDEOGAMES, FILTER_GENRES, ALL_GENRES, FILTER_CREATED, ORDER_NAME, ORDER_RATING, CREATE_VIDEOGAME} from '../actions/actionsTypes'
+import{CLEAR_PAGE, GET_DETAILS_VIDEOGAMES, GET_VIDEOGAMES, FILTER_GENRES, ALL_GENRES, FILTER_CREATED, ORDER_NAME, ORDER_RATING, CREATE_VIDEOGAME, DELETE, UPDATE_VG} from '../actions/actionsTypes'
 const inicialState={
     videogames : [],
     details: {},
@@ -134,6 +134,13 @@ switch(type){
                 }
             }
             case CREATE_VIDEOGAME: return{
+                ...state
+            }
+            case DELETE : return{
+                ...state,
+                
+            }
+             case UPDATE_VG: return{
                 ...state
             }
 

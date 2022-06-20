@@ -41,14 +41,15 @@ router.get('/:idVideogame', async (req, res, next) => {
             }
         })
         const filterBd= {
-           
+           id:bdInfo.id,
              name: bdInfo.name,
             image: bdInfo.image,
             genres: bdInfo.genres.map(e=>e.name),
             description: bdInfo.description,
             released: bdInfo.released,
             rating: bdInfo.rating,
-            platforms: bdInfo.platforms
+            platforms: bdInfo.platforms,
+            created:'created_DB'
             
         }
          return res.json(filterBd)
@@ -82,5 +83,45 @@ router.post('/', async (req, res, next) => {
     } catch (error) {
         next(error)
     }
+})
+router.delete('/:id', async(req, res, next)=>{
+    try {
+    const {id} = req.params
+    
+       await Videogame.destroy({
+        where: {
+            id:id
+        }
+       })
+        return res.json({eliminado:true})
+   } catch (error) {
+      next(error)
+   }  
+})
+router.put('/:id', async(req, res, next)=>{
+    try {
+    const {id} = req.params
+    const atribute = req.body
+
+       let updVg = await Videogame.update(atribute, {
+        where: {
+            id:id
+        },
+       })
+       if(atribute.genres.length > 0){
+           idVG= await Videogame.findByPk(id,{include:Genre})
+        let createGenre = await Genre.findAll({
+            where: {
+                name: atribute.genres
+            },
+        })
+       idVG.addGenre(createGenre)    
+       }
+
+       
+       return res.json({cambiado:true})
+   } catch (error) {
+      next(error)
+   }  
 })
 module.exports = router

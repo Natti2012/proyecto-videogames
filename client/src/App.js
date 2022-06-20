@@ -15,7 +15,7 @@ function App() {
       <Route path='/' exact component={PagInicio}/>
       <Route path='/home' exact component={Home}/>
       <Route path='/videogame/:id' component={DetailVideogame}/>
-      <Route path='/create/videogame' exact component={Createvideogame}/>
+      <Route path='/create/videogame/:id' exact component={Createvideogame}/>
     
      {/* <Route path='/' exact component ={PagInicio}/> */}
   

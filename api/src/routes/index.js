@@ -7,7 +7,7 @@ const { Videogame, } = require('../db');
 
 const router = Router();
 
-router.use('/videogames',videogames)
+router.use('/videogames',videogames) 
 router.use('/videogame',videogame)
 router.use('/genres', genres)
 

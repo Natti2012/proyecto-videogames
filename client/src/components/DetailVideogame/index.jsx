@@ -24,6 +24,7 @@ function DetailVideogame() {
     <div>
       {details.name ?
      <CardDetail
+     id={details.id}
    name = {details.name}
    image= {details.image}
    genres= {details.genres.join(' | ')}
@@ -31,7 +32,7 @@ function DetailVideogame() {
   released= {details.released}
    rating= {details.rating}
   platforms= {details.platforms.join(' | ')}
-   
+   created={details.created}
    />
    :
   
