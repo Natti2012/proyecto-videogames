@@ -26,4 +26,16 @@
 - [ ] Express
 - [ ] Sequelize - Postgres
 
+#### Landing Page
+![Capturaere](https://user-images.githubusercontent.com/93220311/174877895-1b80c25a-a3f7-4c77-8455-348a7d81ec8b.PNG)
+
+#### Home
+![Captura89](https://user-images.githubusercontent.com/93220311/174878119-6cafffed-c5d9-4628-82f1-b741c4a86a0a.PNG)
+
+#### Detail 
+![34444](https://user-images.githubusercontent.com/93220311/174878737-86f4c282-625d-4682-a9e4-afd42e386754.PNG)
+
+#### Create VideoGame
+
+![Captura453](https://user-images.githubusercontent.com/93220311/174878213-06d48b80-f0c0-4966-833c-b60e6d7627dc.PNG)
 
