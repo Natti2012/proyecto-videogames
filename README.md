@@ -17,7 +17,7 @@
 - Usar y practicar testing.
 
 
-## Link de proyecto deployado ==> 
+## Link de proyecto deployado 
 <a href="https://videogameappnatti.vercel.app/" >Ver proyecto</a>
 
 
