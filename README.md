@@ -37,7 +37,7 @@
 ![Capturadh](https://user-images.githubusercontent.com/93220311/181876720-161ca632-1eca-4165-b211-753995dff129.PNG)
 
 #### Detail 
-![dhdfgf](https://user-images.githubusercontent.com/93220311/181876728-e02ce2e5-87ad-43dd-b36d-a0bce11797e0.PNG)
+
 
 ![dfgd](https://user-images.githubusercontent.com/93220311/181876731-1537de3c-4e42-4b22-ab02-ddee124a2205.PNG)
 
