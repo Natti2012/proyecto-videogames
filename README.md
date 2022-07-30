@@ -28,15 +28,21 @@
 - [ ] Sequelize - Postgres
 
 #### Landing Page
-![Capturaere](https://user-images.githubusercontent.com/93220311/174877895-1b80c25a-a3f7-4c77-8455-348a7d81ec8b.PNG)
+
+![Capturahgj](https://user-images.githubusercontent.com/93220311/181876697-57934257-8286-4d54-ab92-6130fd757742.PNG)
 
 #### Home
-![Captura89](https://user-images.githubusercontent.com/93220311/174878119-6cafffed-c5d9-4628-82f1-b741c4a86a0a.PNG)
+![dfg](https://user-images.githubusercontent.com/93220311/181876715-208615b5-1847-45d0-b548-c5f5e2bc9311.PNG)
+
+![Capturadh](https://user-images.githubusercontent.com/93220311/181876720-161ca632-1eca-4165-b211-753995dff129.PNG)
 
 #### Detail 
-![34444](https://user-images.githubusercontent.com/93220311/174878737-86f4c282-625d-4682-a9e4-afd42e386754.PNG)
+![dhdfgf](https://user-images.githubusercontent.com/93220311/181876728-e02ce2e5-87ad-43dd-b36d-a0bce11797e0.PNG)
+
+![dfgd](https://user-images.githubusercontent.com/93220311/181876731-1537de3c-4e42-4b22-ab02-ddee124a2205.PNG)
 
 #### Create VideoGame
 
-![Captura453](https://user-images.githubusercontent.com/93220311/174878213-06d48b80-f0c0-4966-833c-b60e6d7627dc.PNG)
+
+![ddh](https://user-images.githubusercontent.com/93220311/181876735-087058a9-ac91-4221-bf28-2311f33593a5.PNG)
 
